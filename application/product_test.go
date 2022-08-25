@@ -14,4 +14,8 @@ func TestProduct_Enebled(t *testing.T) {
 
 	err := product.Enable()
 	require.Nil(t, err)
+
+	product.Price = 0
+	err = product.Enable()
+	require.Equal(t, "the price must be greater than zero to enable the product", err.Error())
 }
